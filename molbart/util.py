@@ -102,8 +102,8 @@ def build_trainer(args):
         gradient_clip_val=args.clip_grad,
         limit_val_batches=args.limit_val_batches,
         callbacks=[lr_monitor, checkpoint_cb],
-        accelerator='ddp',
-        prepare_data_per_node=False
+        accelerator='ddp'#,
+        #prepare_data_per_node=False
     )
     return trainer
 
