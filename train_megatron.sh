@@ -35,8 +35,8 @@ pp_size=0
 megatron_options=" \
         --model-parallel-size ${mp_size} \
         --pipe-parallel-size ${pp_size} \
-        --num-layers 4 \
-        --hidden-size 256 \
+        --num-layers 8 \
+        --hidden-size 768 \
         --num-attention-heads 8 \
         --seq-length 512 \
         --max-position-embeddings 512 \
