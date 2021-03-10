@@ -93,12 +93,6 @@ class MoleculeDataset(Dataset):
         """
 
         if zinc:
-            path = Path(data_path)
-            # If path is a directory then read every subfile
-            if path.is_dir():
-                df = self._read_dir_df(path)
-            else:
-                df = pd.read_csv(path)
             self.mols = df['smiles'].tolist()
             self.lengths = None
         else:     
@@ -159,6 +153,7 @@ class MoleculeDataLoader(object):
         zinc = False
         ):
 
+        path = Path(file_path)
         if path.is_dir():
             self.df = self._read_dir_df(path)
         else:
