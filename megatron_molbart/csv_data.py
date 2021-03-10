@@ -94,10 +94,8 @@ class MoleculeDataset(Dataset):
 
         if zinc:
             self.mols = df['smiles'].tolist()
-            self.lengths = None
         else:     
             self.mols = df['canonical_smiles'].tolist()
-            self.lengths = df['lengths'].tolist()
         
         self.aug = SMILESRandomizer()
         val_idxs = df.index[df['set'] == 'val'].tolist()
@@ -107,8 +105,6 @@ class MoleculeDataset(Dataset):
         idx_map = {'train': train_idxs, 'val': val_idxs,
                    'test': test_idxs}
         self.mols = [self.mols[idx] for idx in idx_map[split]]
-        if not zinc:
-            self.lengths = [self.lengths[idx] for idx in idx_map[split]]
 
     def __len__(self):
         return len(self.mols)
