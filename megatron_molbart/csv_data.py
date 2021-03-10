@@ -161,12 +161,8 @@ class MoleculeDataLoader(object):
         #self.df = pandas.read_csv(file_path)
         train_dataset = MoleculeDataset(self.df, split='train', zinc=True)
         val_dataset = MoleculeDataset(self.df, split='val', zinc=True)
-        if zinc:
-            self.tokeniser = load_tokeniser(DEFAULT_VOCAB_PATH, DEFAULT_CHEM_TOKEN_START)
-        else:
-            self.tokenizer = \
-                MolEncTokeniser.from_vocab_file(DEFAULT_VOCAB_PATH, REGEX,
-                    DEFAULT_CHEM_TOKEN_START)
+        self.tokeniser = load_tokeniser(DEFAULT_VOCAB_PATH, DEFAULT_CHEM_TOKEN_START)
+
 
         world_size = \
             torch.distributed.get_world_size(group=mpu.get_data_parallel_group())
