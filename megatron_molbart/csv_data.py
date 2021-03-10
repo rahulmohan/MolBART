@@ -100,7 +100,6 @@ class MoleculeDataset(Dataset):
             else:
                 df = pd.read_csv(path)
             self.mols = df['smiles'].tolist()
-            self.mols = [Chem.MolFromSmiles(smi) for smi in self.mols]
             self.lengths = None
         else:     
             self.mols = df['canonical_smiles'].tolist()
