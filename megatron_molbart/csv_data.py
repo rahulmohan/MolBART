@@ -128,18 +128,6 @@ class MoleculeDataset(Dataset):
         output = {'encoder_smiles': enc_smi, 'decoder_smiles': dec_smi}
         return output
 
-    def _read_dir_df(self, path):
-        # num_cpus = 4
-        # executor = ProcessPoolExecutor(num_cpus)
-        # files = [f for f in path.iterdir()]
-        # futures = [executor.submit(pd.read_csv, f) for f in files]
-        # dfs = [future.result() for future in futures]
-
-        dfs = [pd.read_csv(f) for f in path.iterdir()]
-
-        zinc_df = pd.concat(dfs, ignore_index=True, copy=False)
-        return zinc_df
-
 class MoleculeDataLoader(object):
 
     """Loads data from a csv file containing molecules."""
@@ -183,11 +171,6 @@ class MoleculeDataLoader(object):
         return (self.train_loader, self.val_loader)
 
     def _read_dir_df(self, path):
-        # num_cpus = 4
-        # executor = ProcessPoolExecutor(num_cpus)
-        # files = [f for f in path.iterdir()]
-        # futures = [executor.submit(pd.read_csv, f) for f in files]
-        # dfs = [future.result() for future in futures]
 
         dfs = [pd.read_csv(f) for f in path.iterdir()]
 
