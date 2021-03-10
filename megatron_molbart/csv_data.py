@@ -137,8 +137,7 @@ class MoleculeDataLoader(object):
         file_path,
         batch_size=32,
         num_buckets=20,
-        num_workers=32,
-        zinc = False
+        num_workers=32
         ):
 
         path = Path(file_path)
