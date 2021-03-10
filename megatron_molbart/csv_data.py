@@ -160,10 +160,10 @@ class MoleculeDataLoader(object):
         ):
 
         if path.is_dir():
-            df = self._read_dir_df(path)
+            self.df = self._read_dir_df(path)
         else:
-            df = pd.read_csv(path)
-        self.df = pandas.read_csv(file_path)
+            self.df = pd.read_csv(path)
+        #self.df = pandas.read_csv(file_path)
         train_dataset = MoleculeDataset(self.df, split='train', zinc=True)
         val_dataset = MoleculeDataset(self.df, split='val', zinc=True)
         if zinc:
